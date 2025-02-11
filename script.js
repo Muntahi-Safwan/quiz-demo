@@ -1,3 +1,4 @@
+
 // Quiz data
 const quizData = [
     {
