@@ -5,6 +5,7 @@ body {
 .quiz-container {
     max-width: 800px;
     margin: 0 auto;
+    padding: 1rem;
 }
 
 .timer-container {
@@ -77,9 +78,78 @@ body {
     background-color: #f8d7da !important;
 }
 
+.navigation-container {
+    
+    
+    display: flex;
+    gap: 1rem;
+    z-index: 1000;
+    width: 100%;
+    pointer-events: none;
+    position: static;
+        justify-content: center;
+        transform: none;
+        margin-top: 1rem;
+        pointer-events: auto;
+}
+
+.navigation-container button {
+    pointer-events: auto;
+}
+
+.nav-prev {
+    margin-left: 20px;
+}
+
+.nav-next {
+    margin-left: auto;
+    margin-right: 20px;
+}
+
+@media (max-width: 992px) {
+    .navigation-container {
+        position: static;
+        justify-content: center;
+        transform: none;
+        margin-top: 1rem;
+        pointer-events: auto;
+    }
+
+    .nav-prev, .nav-next {
+        margin: 0;
+    }
+}
+
+.nav-arrow {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: #fff;
+    border: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.nav-arrow:hover:not(:disabled) {
+    background-color: #0d6efd;
+    color: white;
+    transform: scale(1.1);
+}
+
+.nav-arrow:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
 .pagination-container {
     display: flex;
+    justify-content: center;
     gap: 0.5rem;
+    margin: 1.5rem 0;
+    flex-wrap: wrap;
 }
 
 .page-indicator {
@@ -106,13 +176,15 @@ body {
     color: white;
 }
 
+.submit-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
 @media (max-width: 768px) {
-    .container {
-        padding: 1rem;
-    }
-    
     .quiz-container {
-        padding: 1rem;
+        padding: 0.5rem;
     }
     
     .question-container {
@@ -121,5 +193,10 @@ body {
     
     .option-container label {
         padding: 0.75rem;
+    }
+
+    .nav-arrow {
+        width: 40px;
+        height: 40px;
     }
 }

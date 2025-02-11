@@ -93,6 +93,7 @@ const quizData = [
 
 ];
 
+
 // Quiz state
 let currentPage = 0;
 const questionsPerPage = 5;
@@ -105,6 +106,8 @@ let quizSubmitted = false;
 const quizContent = document.getElementById('quiz-content');
 const prevBtn = document.getElementById('prevBtn');
 const nextBtn = document.getElementById('nextBtn');
+const submitBtn = document.getElementById('submitBtn');
+const submitContainer = document.getElementById('submit-container');
 const pagination = document.getElementById('pagination');
 const timerElement = document.getElementById('timer');
 const successModal = new bootstrap.Modal(document.getElementById('successModal'));
@@ -161,15 +164,10 @@ function renderQuestions() {
 
     // Update navigation buttons
     prevBtn.disabled = currentPage === 0;
-    if (currentPage === totalPages - 1) {
-        nextBtn.textContent = quizSubmitted ? 'Review Complete' : 'Submit';
-        nextBtn.classList.remove('btn-primary');
-        nextBtn.classList.add(quizSubmitted ? 'btn-secondary' : 'btn-success');
-    } else {
-        nextBtn.textContent = 'Next';
-        nextBtn.classList.remove('btn-success', 'btn-secondary');
-        nextBtn.classList.add('btn-primary');
-    }
+    nextBtn.disabled = currentPage === totalPages - 1;
+    
+    // Show/hide submit button on last page
+    submitContainer.classList.toggle('d-none', currentPage !== totalPages - 1 || quizSubmitted);
 }
 
 // Handle user's answer
@@ -203,11 +201,9 @@ function navigateToPage(pageNumber) {
     updatePagination();
 }
 
-// Handle next/submit button click
+// Handle next button click
 nextBtn.addEventListener('click', () => {
-    if (currentPage === totalPages - 1 && !quizSubmitted) {
-        submitQuiz();
-    } else if (!quizSubmitted) {
+    if (currentPage < totalPages - 1) {
         currentPage++;
         renderQuestions();
         updatePagination();
@@ -222,6 +218,9 @@ prevBtn.addEventListener('click', () => {
         updatePagination();
     }
 });
+
+// Handle submit button click
+submitBtn.addEventListener('click', submitQuiz);
 
 // Submit quiz
 function submitQuiz() {

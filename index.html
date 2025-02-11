@@ -28,16 +28,25 @@
                 </div>
             </div>
 
+            <div id="pagination" class="pagination-container">
+                <!-- Pagination will be inserted here -->
+            </div>
+
             <div id="quiz-content" class="mb-4">
                 <!-- Questions will be inserted here -->
             </div>
 
-            <div class="d-flex justify-content-between align-items-center">
-                <button id="prevBtn" class="btn btn-secondary px-4" disabled>Previous</button>
-                <div id="pagination" class="pagination-container">
-                    <!-- Pagination will be inserted here -->
-                </div>
-                <button id="nextBtn" class="btn btn-primary px-4">Next</button>
+            <div id="submit-container" class="submit-container d-none">
+                <button id="submitBtn" class="btn btn-success btn-lg px-5">Submit Quiz</button>
+            </div>
+
+            <div class="navigation-container">
+                <button id="prevBtn" class="nav-arrow nav-prev" disabled>
+                    <i class="bi bi-chevron-left fs-4"></i>
+                </button>
+                <button id="nextBtn" class="nav-arrow nav-next">
+                    <i class="bi bi-chevron-right fs-4"></i>
+                </button>
             </div>
         </div>
     </div>
